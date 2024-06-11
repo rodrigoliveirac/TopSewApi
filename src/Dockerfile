@@ -4,10 +4,6 @@ FROM openjdk:19-jdk AS build
 # Set the working directory
 WORKDIR /app
 
-# Copy the Maven wrapper and pom.xml
-COPY app/.mvn/wrapper .
-COPY app/pom.xml .
-
 # Set execution permission for the Maven wrapper
 RUN chmod +x ./mvn/wrapper/mvnw
 
@@ -32,3 +28,7 @@ EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "/app.jar"]
+
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install maven -y
