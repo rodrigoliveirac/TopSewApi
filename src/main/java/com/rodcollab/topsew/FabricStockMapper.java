@@ -9,12 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.stereotype.Component;
 import com.rodcollab.topsew.model.ColorStockItem;
 import com.rodcollab.topsew.model.dto.FabricStockEntryDTO;
 import com.rodcollab.topsew.model.entity.FabricStockEntryEntity;
 
-@Component
 public class FabricStockMapper {
     
     public FabricStockEntryDTO toDto(FabricStockEntryEntity fabricStockEntryEntity) {
