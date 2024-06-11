@@ -4,7 +4,7 @@ FROM openjdk:19-jdk AS build
 # Set the working directory
 WORKDIR /app
 
-# Copy the Maven wrapper and pom.xml from the parent directory
+# Copy the Maven wrapper and pom.xml
 COPY mvn/wrapper ./mvn/wrapper
 COPY pom.xml .
 
@@ -14,7 +14,7 @@ RUN chmod +x ./mvn/wrapper/mvnw
 # Download dependencies (using the pom.xml)
 RUN ./mvn/wrapper/mvnw dependency:go-offline
 
-# Copy the source code from the current directory (src)
+# Copy the source code
 COPY . .
 
 # Build the application
