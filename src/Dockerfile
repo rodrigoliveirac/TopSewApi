@@ -1,24 +1,15 @@
-# Stage 1: Build the application using Maven
+# Importing JDK and copying required files
 FROM openjdk:19-jdk AS build
-
-# Set the working directory
 WORKDIR /app
+COPY pom.xml .
+COPY src src
 
-# Copy the Maven wrapper and pom.xml
+# Copy Maven wrapper
 COPY mvnw .
 COPY .mvn .mvn
-COPY pom.xml .
 
 # Set execution permission for the Maven wrapper
 RUN chmod +x ./mvnw
-
-# Download dependencies (using the pom.xml)
-RUN ./mvnw dependency:go-offline
-
-# Copy the source code
-COPY src src
-
-# Build the application
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Create the final Docker image using OpenJDK 19
@@ -27,9 +18,5 @@ VOLUME /tmp
 
 # Copy the JAR from the build stage
 COPY --from=build /app/target/*.jar app.jar
-
-# Expose the application port
+ENTRYPOINT ["java","-jar","/app.jar"]
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "/app.jar"]
