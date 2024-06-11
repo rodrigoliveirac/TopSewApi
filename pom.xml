@@ -14,7 +14,7 @@
 	<name>topsew</name>
 	<description>Topsew Restful Api</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>20</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
