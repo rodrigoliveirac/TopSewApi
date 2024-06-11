@@ -5,8 +5,8 @@ FROM openjdk:19-jdk AS build
 WORKDIR /app
 
 # Copy the Maven wrapper and pom.xml
-COPY /app/.mvn/wrapper .
-COPY /app/pom.xml .
+COPY .mvn/wrapper .
+COPY pom.xml .
 
 # Set execution permission for the Maven wrapper
 RUN chmod +x ./mvn/wrapper/mvnw
