@@ -20,7 +20,3 @@ VOLUME /tmp
 COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 EXPOSE 8080
-
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git
