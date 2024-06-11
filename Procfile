@@ -1,1 +1,1 @@
-web: java -jar target/ckee-app-0.0.1-SNAPSHOT.jar
+web: java -jar target/topsew-0.0.1-SNAPSHOT.jar
