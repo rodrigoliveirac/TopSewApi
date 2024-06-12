@@ -35,8 +35,8 @@ public class FabricStockEntryController {
         return fabricStockEntryService.updateFabricStockEntryById(id, fabricStockEntry);
     }
 
-    @DeleteMapping("/fabricStockEntry/{id}")
-    public String deleteFabricStockEntry(@PathVariable("id") Long id) {
-        return fabricStockEntryService.deleteFabricStockEntryById(id);
+    @DeleteMapping("/fabricStockEntries/deleteAll")
+    public void deleteFabricStockEntry() {
+         fabricStockEntryService.deleteAll();
     }
 }

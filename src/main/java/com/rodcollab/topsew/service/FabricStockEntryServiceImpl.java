@@ -73,4 +73,9 @@ public class FabricStockEntryServiceImpl implements FabricStockEntryService {
         return "No such FabricStockEntry in the database";
     }
 
+    @Override
+    public void deleteAll() {
+        fabricStockEntryRepository.deleteAll();;
+    }
+
 }

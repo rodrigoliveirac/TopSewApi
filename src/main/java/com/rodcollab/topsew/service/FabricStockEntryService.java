@@ -16,4 +16,6 @@ public interface FabricStockEntryService {
     FabricStockEntryEntity updateFabricStockEntryById(Long id, FabricStockEntryEntity fabricStockEntry);
 
     String deleteFabricStockEntryById(Long id);
+
+    void deleteAll();
 }
