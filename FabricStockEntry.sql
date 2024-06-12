@@ -19,9 +19,11 @@
 -- Table structure for table `fabric_stock_entry_entity`
 --
 
+use heroku_9e09bda83841914;
+
 DROP TABLE IF EXISTS `fabric_stock_entry_entity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8mb3 */;
 CREATE TABLE `fabric_stock_entry_entity` (
   `fabric_stock_entry_id` bigint NOT NULL,
   `amount` double DEFAULT NULL,
@@ -32,7 +34,7 @@ CREATE TABLE `fabric_stock_entry_entity` (
   `fabric_type` varchar(255) DEFAULT NULL,
   `order_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`fabric_stock_entry_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
