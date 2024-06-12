@@ -18,31 +18,26 @@ public class FabricStockEntryServiceImpl implements FabricStockEntryService {
     @Autowired
     public FabricStockEntryRepository fabricStockEntryRepository;
     public FabricStockMapper mapper;
-    private List<FabricStockEntryDTO> cache = null;
 
     @Override
     public FabricStockEntryDTO saveFabricStockEntry(FabricStockEntryDTO fabricStockEntryDTO) {
         mapper = new FabricStockMapper();
         FabricStockEntryEntity createdFabricStockEntryEntity = fabricStockEntryRepository.save(mapper.toNewFabricStockEntryEntity(fabricStockEntryDTO));
         FabricStockEntryDTO newItem = mapper.toDto(createdFabricStockEntryEntity);
-        cache.add(newItem);
         return newItem;
     }
 
     @Override
     public List<FabricStockEntryDTO> fetchAllFabricStockEntries() {
-        if(cache == null) {
-            cache = new ArrayList<FabricStockEntryDTO>();
             mapper = new FabricStockMapper();
             List<FabricStockEntryEntity> allFabricStockEntries = fabricStockEntryRepository.findAll();
             List<FabricStockEntryDTO> allFabricStockEntriesDTO = new ArrayList<FabricStockEntryDTO>();
             for(int i = 0; i < allFabricStockEntries.size(); i++) {
                 FabricStockEntryDTO item = mapper.toDto(allFabricStockEntries.get(i));
                 allFabricStockEntriesDTO.add(item);
-                cache.add(item);
             }
-        }
-        return cache;
+    
+        return allFabricStockEntriesDTO;
     }
 
     @Override
@@ -85,11 +80,8 @@ public class FabricStockEntryServiceImpl implements FabricStockEntryService {
     public void deleteAll() {
         for(int i = 0; i < cache.size(); i++) {
     
-            if(cache.get(i).getId().isPresent()) {
-                fabricStockEntryRepository.deleteById(cache.get(i).getId().get());
-                final int currentIndex = i;
-                cache.removeIf(n -> n.getId() == cache.get(currentIndex).getId());
-            }
+            fabricStockEntryRepository.deleteById(cache.get(i).getId().get());
+
         }
         
         fabricStockEntryRepository.deleteAll();;

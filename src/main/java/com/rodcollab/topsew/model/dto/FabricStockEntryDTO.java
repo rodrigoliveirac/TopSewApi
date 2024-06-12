@@ -3,8 +3,6 @@ package com.rodcollab.topsew.model.dto;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.text.html.Option;
-
 import com.rodcollab.topsew.model.ColorStockItem;
 
 public class FabricStockEntryDTO {
