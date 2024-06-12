@@ -12,19 +12,17 @@ public class TopsewApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TopsewApplication.class, args);
-	}
-
-	Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-        public void run() {
-            DataSource ds = DatabaseConfig.ds;
-            if (ds != null) {
-                try {
-                    ds.getConnection().close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                DataSource ds = DatabaseConfig.ds;
+                if (ds != null) {
+                    try {
+                        ds.getConnection().close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        }
-    }, "Shutdown-thread"));
-
+        }, "Shutdown-thread"));
+	}
 }
