@@ -78,9 +78,10 @@ public class FabricStockEntryServiceImpl implements FabricStockEntryService {
 
     @Override
     public void deleteAll() {
-        for(int i = 0; i < cache.size(); i++) {
+        List<FabricStockEntryEntity> list = fabricStockEntryRepository.findAll();
+        for(int i = 0; i < list.size(); i++) {
     
-            fabricStockEntryRepository.deleteById(cache.get(i).getId().get());
+            fabricStockEntryRepository.deleteById(list.get(i).getFabricStockEntryId());
 
         }
         
