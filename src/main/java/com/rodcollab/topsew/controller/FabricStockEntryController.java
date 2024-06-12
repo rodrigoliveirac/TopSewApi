@@ -35,7 +35,7 @@ public class FabricStockEntryController {
         return fabricStockEntryService.updateFabricStockEntryById(id, fabricStockEntry);
     }
 
-    @DeleteMapping("/fabricStockEntries/deleteAll")
+    @DeleteMapping("/fabricStockEntry/deleteAll")
     public void deleteFabricStockEntry() {
          fabricStockEntryService.deleteAll();
     }
